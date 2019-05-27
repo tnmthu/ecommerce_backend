@@ -5,10 +5,12 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const mongoose = require("mongoose");
 
-const indexRouter = require("./routes/index");
 const userRouter = require("./routes/user");
+const productRouter = require("./routes/product");
+const cartRouter = require("./routes/cart");
 
 mongoose.connect("mongodb://localhost:27017/test", { useNewUrlParser: true });
+mongoose.Promise = global.Promise;
 
 var app = express();
 
@@ -22,8 +24,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
 app.use("/user", userRouter);
+app.use("/product", productRouter);
+app.use("/cart", cartRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const Product = require("./product");
 
 const saltRounds = 10;
 
@@ -18,6 +19,17 @@ const userSchema = mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  cart: {
+    total: Number,
+    cartItem: [
+      {
+        item: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+        size: String,
+        color: String,
+        quantity: Number
+      }
+    ]
   }
 });
 
