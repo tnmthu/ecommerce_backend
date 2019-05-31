@@ -142,7 +142,8 @@ module.exports = {
               {
                 email: user[0].email,
                 userId: user[0]._id,
-                firstName: user[0].firstName
+                firstName: user[0].firstName,
+                lastName: user[0].lastName
               },
               "secretKey",
               {
@@ -164,7 +165,9 @@ module.exports = {
           error: err
         });
       });
-  }
+  },
+
+  auth: function(req, res) {}
 
   // authenUser: function(req, res) {
   //   const { email, password } = req.body;

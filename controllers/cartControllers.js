@@ -25,17 +25,18 @@ module.exports = {
 
   addProductToCart: (req, res, next) => {
     const { id, newCart } = req.body;
+    console.log(req.user);
 
-    User.update(
-      { _id: id },
-      {
-        $set: {
-          cart: newCart
-        }
-      }
-    ).then(result => {
-      res.status(200).json(result);
-    });
+    // User.update(
+    //   { _id: id },
+    //   {
+    //     $set: {
+    //       cart: newCart
+    //     }
+    //   }
+    // ).then(result => {
+    //   res.status(200).json(result);
+    // });
   }
 
   // removeProductFromCart: (req, res, next) => {

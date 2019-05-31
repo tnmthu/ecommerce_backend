@@ -4,7 +4,9 @@ const productControllers = require("../controllers/productControllers");
 const checkAuth = require("../middleware/check_auth");
 
 /* GET users listing. */
-router.get("/", productControllers.getAllProducts);
+router.post("/", productControllers.getAllProducts);
+
+// router.get("/", productControllers.getAllProducts);
 
 router.get("/:productId", productControllers.getProduct);
 

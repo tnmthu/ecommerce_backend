@@ -17,17 +17,16 @@ const productSchema = mongoose.Schema({
     imgMore3: String,
     imgMore4: String
   },
-  available: [
-    {
-      color: String,
-      size: {
-        sizeS: Number,
-        sizeM: Number,
-        sizeL: Number
-      }
+  available: {
+    color: [String],
+    size: {
+      S: Number,
+      M: Number,
+      L: Number
     }
-  ],
+  },
   category: String,
+  gender: String,
   rating: Number,
   reviews: [
     {

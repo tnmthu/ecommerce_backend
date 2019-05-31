@@ -3,23 +3,13 @@ const mongoose = require("mongoose");
 
 module.exports = {
   getAllProducts: function(req, res, next) {
-    Product.find()
-      // .select()
+    Product.find({ gender: req.body.gender, category: req.body.category })
+      .select("_id name price images")
       .exec()
       .then(docs => {
         const response = {
           count: docs.length,
-          product: docs.map(doc => {
-            return {
-              name: doc.name,
-              price: doc.price,
-              images: doc.images,
-              available: doc.available,
-              category: doc.category,
-              rating: doc.rating,
-              reviews: doc.review
-            };
-          })
+          product: docs
         };
         res.status(200).json(response);
       })
@@ -32,6 +22,7 @@ module.exports = {
 
   getProduct: function(req, res, next) {
     const { productId } = req.params;
+    console.log(productId, req.params);
     Product.findById(productId)
       .exec()
       .then(product => {
