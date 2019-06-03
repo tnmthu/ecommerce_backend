@@ -22,7 +22,7 @@ module.exports = {
 
   getProduct: function(req, res, next) {
     const { productId } = req.params;
-    console.log(productId, req.params);
+    // console.log(productId, req.params);
     Product.findById(productId)
       .exec()
       .then(product => {

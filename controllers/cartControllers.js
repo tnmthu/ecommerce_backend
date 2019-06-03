@@ -24,19 +24,44 @@ module.exports = {
   },
 
   addProductToCart: (req, res, next) => {
-    const { id, newCart } = req.body;
-    console.log(req.user);
-
-    // User.update(
-    //   { _id: id },
-    //   {
-    //     $set: {
-    //       cart: newCart
-    //     }
-    //   }
-    // ).then(result => {
-    //   res.status(200).json(result);
-    // });
+    const { userId } = req.body;
+    // console.log("here");
+    const newCart = {
+      item: req.body.item,
+      name: req.body.name,
+      size: req.body.size,
+      color: req.body.color,
+      quantity: req.body.quantity,
+      price: req.body.price
+    };
+    // console.log(userId);
+    User.findById(userId)
+      .exec()
+      .then(user => {
+        const cart = user.cart;
+        // console.log("dafaddf");
+        // console.log(cart);
+        cart.cartItem.push(newCart);
+        // console.log(cart.cartItem);
+        User.update(
+          { _id: userId },
+          {
+            $set: {
+              cart
+            }
+          }
+        ).then(result => {
+          res.status(200).json({
+            cart: cart
+          });
+        });
+      })
+      .catch(err => {
+        res.status(500).json({
+          message: "Failed to add to cart",
+          error: err
+        });
+      });
   }
 
   // removeProductFromCart: (req, res, next) => {

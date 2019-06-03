@@ -20,16 +20,33 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  cart: [
-    {
-      item: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
-      size: String,
-      color: String,
-      quantity: Number,
-      name: String,
-      price: Number
-    }
-  ]
+  cart: {
+    cartItem: [
+      {
+        item: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+        size: {
+          type: String,
+          required: true
+        },
+        color: {
+          type: String,
+          required: true
+        },
+        quantity: {
+          type: Number,
+          required: true
+        },
+        name: {
+          type: String,
+          required: true
+        },
+        price: {
+          type: Number,
+          required: true
+        }
+      }
+    ]
+  }
 });
 
 // userSchema.pre("save", function(next) {
