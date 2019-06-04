@@ -34,20 +34,16 @@ module.exports = {
       quantity: req.body.quantity,
       price: req.body.price
     };
-    // console.log(userId);
     User.findById(userId)
       .exec()
       .then(user => {
         const cart = user.cart;
-        // console.log("dafaddf");
-        // console.log(cart);
         cart.cartItem.push(newCart);
-        // console.log(cart.cartItem);
         User.update(
           { _id: userId },
           {
             $set: {
-              cart
+              cart: cart
             }
           }
         ).then(result => {

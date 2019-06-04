@@ -143,7 +143,8 @@ module.exports = {
                 email: user[0].email,
                 userId: user[0]._id,
                 firstName: user[0].firstName,
-                lastName: user[0].lastName
+                lastName: user[0].lastName,
+                cart: user[0].cart
               },
               "secretKey",
               {
