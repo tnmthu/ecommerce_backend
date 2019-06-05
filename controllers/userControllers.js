@@ -166,9 +166,9 @@ module.exports = {
           error: err
         });
       });
-  },
+  }
 
-  auth: function(req, res) {}
+  // auth: function(req, res) {}
 
   // authenUser: function(req, res) {
   //   const { email, password } = req.body;

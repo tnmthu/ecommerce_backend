@@ -9,6 +9,7 @@ var cors = require("cors");
 const userRouter = require("./routes/user");
 const productRouter = require("./routes/product");
 const cartRouter = require("./routes/cart");
+const orderRouter = require("./routes/order");
 
 mongoose.connect("mongodb://localhost:27017/test", { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
@@ -37,6 +38,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/user", userRouter);
 app.use("/product", productRouter);
 app.use("/cart", cartRouter);
+app.use("/order", orderRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

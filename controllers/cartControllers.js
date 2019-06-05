@@ -58,10 +58,9 @@ module.exports = {
           error: err
         });
       });
+  },
+
+  removeProductFromCart: (req, res, next) => {
+    const { productId } = req.params;
   }
-
-  // removeProductFromCart: (req, res, next) => {
-  //   const { productId } = req.params;
-
-  // }
 };
