@@ -11,7 +11,9 @@ router.post("/signup", userControllers.createNewUser);
 
 router.get("/:userId", userControllers.getUser);
 
-router.patch("/:userId", checkAuth, userControllers.updateUserInfo);
+// router.patch("/:userId", checkAuth, userControllers.updateUserInfo);
+
+router.patch("/:userId", userControllers.updateUserInfo);
 
 // router.post("/authenticate", userControllers.authenUser);
 

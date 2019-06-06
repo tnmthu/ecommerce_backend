@@ -97,14 +97,16 @@ module.exports = {
   },
 
   updateUserInfo: (req, res, next) => {
+    console.log("ditconme");
     const id = req.params.userId;
-    const { ops } = req.body;
-    const updateOps = {};
-    console.log(ops);
-    for (const ops of req.body) {
-      updateOps[ops.propName] = ops.value;
-    }
-    User.update({ _id: id }, { $set: updateOps })
+    // const { ops } = req.body;
+    // const updateOps = {};
+    // console.log(ops);
+    console.log("here");
+    // for (const ops of req.body) {
+    //   updateOps[ops.propName] = ops.value;
+    // }
+    User.update({ _id: id }, { $set: { cart: req.body.cart } })
       .exec()
       .then(result => {
         res.status(200).json({
