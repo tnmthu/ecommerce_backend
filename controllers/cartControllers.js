@@ -38,6 +38,7 @@ module.exports = {
       .exec()
       .then(user => {
         const cart = user.cart;
+        console.log("dau", cart);
         cart.cartItem.push(newCart);
         User.update(
           { _id: userId },
@@ -47,8 +48,9 @@ module.exports = {
             }
           }
         ).then(result => {
+          console.log(cart.cartItem);
           res.status(200).json({
-            cart: cart
+            cart: cart.cartItem
           });
         });
       })
