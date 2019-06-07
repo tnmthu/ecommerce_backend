@@ -35,7 +35,7 @@ module.exports = {
   getUser: function(req, res, next) {
     const { userId } = req.params;
     User.findById(userId)
-      .select("firstName lastName email")
+      .select("firstName lastName email cart")
       .exec()
       .then(user => {
         if (!user) {
@@ -97,12 +97,12 @@ module.exports = {
   },
 
   updateUserInfo: (req, res, next) => {
-    console.log("ditconme");
+    // console.log("ditconme");
     const id = req.params.userId;
     // const { ops } = req.body;
     // const updateOps = {};
     // console.log(ops);
-    console.log("here");
+    // console.log("here");
     // for (const ops of req.body) {
     //   updateOps[ops.propName] = ops.value;
     // }
